@@ -52,6 +52,10 @@
             background-color: #1D546C;
         }
 
+        .nav-pills .nav-link:hover{
+            background-color: #397b98;
+        }
+
         .scroll-container {
             height: 100vh;
             overflow-y: auto;
@@ -79,6 +83,16 @@
 
         .experience-item {
             color: #F4F4F4;
+            padding: 1.5rem 2rem;
+        }
+        .experience-item:hover{
+            background-color: #397b98;
+        }
+        .project-item{
+            padding: 1.5rem 2rem;
+        }
+        .project-item:hover{
+            background-color: #397b98;
         }
 
         .experience-date {
@@ -145,7 +159,7 @@
         .a-text {
             color: #F4F4F4;
             font-weight: 600;
-            text-decoration: none;
+            @* text-decoration: none; *@
             font-size: 1rem;
         }
 
@@ -181,6 +195,75 @@
         .nav-icons a:hover {
             color: #7dd3fc;
             transform: translateY(-2px);
+        }
+
+        .experience-item {
+            color: #F4F4F4;
+        }
+
+        .project-date {
+            min-width: 160px;        
+            max-width: 160px;
+            height: 100px;           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-date img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;       
+            border-radius: 6px;
+            border: 1px solid #1D546C;
+        }
+
+        .project-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .project-title {
+            color: #F4F4F4;
+        }
+
+        .project-company {
+            color: #a9c4d8;
+        }
+
+        .project-description {
+            margin-top: 0.75rem;
+            padding-left: 1rem;
+            color: #d0dde7;
+        }
+
+        .project-description li {
+            margin-bottom: 0.4rem;
+        }
+
+        .project-link {
+            margin-top: 0.75rem;
+        }
+        .project-link:hover{
+            background-color: #397b98;
+        }
+
+        .project-link a {
+            margin-right: 1rem;
+            font-size: 0.85rem;
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        .project-link a:hover {
+            text-decoration: underline;
+        }
+
+        .project-skills {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
     </style>
 </head>
@@ -229,13 +312,12 @@
                         performance and scalability of your desired products.</p>
                     <p>Throughout my career, I've had the opportunity to develop software across a variety of settings -
                         from <a href="https://www.asml.com/en" class="a-text">european tech giants<a /> to <a
-                                href="https://www.continental.com/en/" class="a-text"> automotive giants</a> to <a
+                                href="https://www.continental.com/en/" class="a-text"> automotive giants</a>, <a
                                 href="https://cpp.canon/about/corporate-information/worldwide/netherlands/"
-                                class="a-text"">hardware
-                                giants</a> and also <a href=" https://cp-pro.de/en/" class="a-text">small software
+                                class="a-text"">hardware giants</a> and also <a href=" https://cp-pro.de/en/" class="a-text">small software
                                 companies.</a></p>
                     <p>If you're interested in learning more about me feel free to write me to my <a
-                            href="mailto:@Model.Email">email</a> address.</p>
+                            href="mailto:@Model.Email" class="a-text">email</a> address.</p>
                 </section>
                 <br />
                 <section id="Experience">
@@ -254,7 +336,6 @@
                                     {
                                         @(exp.EndDate?.ToString("MMM yyyy"))
                                     }
-
                                 </div>
 
                                 <div class="experience-content ms-4">
@@ -294,8 +375,33 @@
                 </section>
                 <br />
                 <section id="Projects">
-                    <h1>Projects</h1>
-                    <p>Projects content</p>
+                    @foreach (var prj in Model.Projects)
+                    {
+                        <a href="@prj.WebUrl" target="_blank" class="project-link" style="text-decoration:none;">
+                            <div class="project-item d-flex mb-5">
+                                <div class="project-date text-uppercase">
+                                    <img src="@prj.ImageUrl" alt="img"/>
+                                </div>
+                                <div class="project-content ms-4">
+                                    <div class="project-header">
+                                        <span class="project-title">@prj.Title <i
+                                                class="bi bi-arrow-up-right"></i></span>
+                                    </div>
+
+                                    <div class="project-description">
+                                        <span>@prj.Description</span>
+                                    </div>
+
+                                    <div class="project-skills">
+                                        @foreach (var skill in prj.Achievements)
+                                        {
+                                            <span class="skill-pill">@skill</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
                 </section>
 
             </div>

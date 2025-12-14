@@ -11,6 +11,7 @@ namespace AndreiPieleanuWebsite.Pages
         public string MyNavDescription { get; set; } = "I build your customizable, unique software tools. Proprietary software.";
         public string Email { get; set; } = "pieleanuandrei2001@gmail.com";
         public List<Experience> ExperienceList { get; set; } = new List<Experience>();
+        public List<Project> Projects { get; set; } = new List<Project>();
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -46,8 +47,8 @@ namespace AndreiPieleanuWebsite.Pages
                     Skill.AWS, Skill.Kubernetes, Skill.gRPC, Skill.Grafana, Skill.Java, Skill.RabbitMQ,
                     Skill.Spring, Skill.CICD
                 ], [
-                    "https://sue.nl/"
-                ], []),
+                    "https://sue.nl/", "https://github.com/AndreiPieleanu/suedataplatform"
+                ], ["AWS cloud tool"]),
 
                 new Experience(new DateOnly(2024, 02, 01), new DateOnly(2024, 06, 01), "Full-Stack Engineer", "Canon Production Printing", [
                     "Built an internal website that allowed Canon engineers to generate, customize and manage hardware licenses required for testing Canon's printers."
@@ -67,6 +68,14 @@ namespace AndreiPieleanuWebsite.Pages
                 ], [
                     "https://www.continental.com/en/"
                 ], []),
+            ];
+
+            Projects = [
+                new Project("https://github.com/AndreiPieleanu/kwex_frontend", "/images/kwex.png", "KweX Social media app", "KweX is my own social media app! It's the place you are free to post and share your thoughts with others!", ["social media", "100 posts/second"]),
+                new Project("https://github.com/AndreiPieleanu/moderator-service", "/images/ai-model.png", "AI model for foul language", "A sole-trained AI-model which is able to detect if you are using foul language in a message.", ["95% accuracy", "English-language", "Over 100.000 foul words and expressions"]),
+                new Project("https://github.com/AndreiPieleanu/MyGames/tree/main/Story%20of%20Scrappie", "/images/scrappie.png", "Story of Scrappie", "Java-based 2D video game where you must fight the God-machine to turn back into a boy.", ["6th place nationwide", "singleplayer", "customization"]),
+                new Project("https://github.com/AndreiPieleanu/MyGames/tree/main/The%20Sailor", "/images/sailor.jpg", "Warships", "Java-based 2D video game where you progressively upgrade your ship to fight the Spanish Armada on the shores of the Caribbean Sea.", ["modularization", "expansion", "20 players"]),
+                new Project("https://github.com/AndreiPieleanu/StyleMe-master-CombinedApps", "/images/styleme.jpg", "StyleMe", "Mobile app which connects customers with barber shops.", ["mobile app", "5 barber shops", "50 customers"]),
             ];
         }
     }
@@ -94,11 +103,11 @@ namespace AndreiPieleanuWebsite.Pages
     }
     public class Project
     {
-        public string WebUrl {get;set;}
-        public string ImageUrl {get;set;}
-        public string Title {get;set;}
-        public string Description {get;set;}
-        public List<string> Achievements {get;set;}
+        public string WebUrl { get; set; }
+        public string ImageUrl { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public List<string> Achievements { get; set; }
         public Project(string webUrl, string imageUrl, string title, string description, List<String> achievements)
         {
             WebUrl = webUrl;
