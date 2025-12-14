@@ -1,0 +1,250 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.FullName</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0C2B4E;
+            color: #F4F4F4;
+        }
+
+        .nav-container {
+            width: 30%;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .nav-subtitle {
+            font-size: 0.9rem;
+            color: #cfd8dc;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-text {
+            font-size: 0.85rem;
+            color: #cfd8dc;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-pills .nav-link {
+            color: #F4F4F4;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #1D546C;
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            position: relative;
+            /* REQUIRED */
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 80px 40px;
+        }
+
+        #About {
+            background-color: #1A3D64;
+        }
+
+        #Experience {
+            background-color: #1A3D64;
+        }
+
+        #Projects {
+            background-color: #1A3D64;
+        }
+
+        .experience-item {
+            color: #F4F4F4;
+        }
+
+        .experience-date {
+            min-width: 130px;
+            font-size: 0.8rem;
+            color: #8faecf;
+            letter-spacing: 0.05em;
+        }
+
+        .experience-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .experience-title {
+            color: #F4F4F4;
+        }
+
+        .experience-company {
+            color: #a9c4d8;
+        }
+
+        .experience-description {
+            margin-top: 0.75rem;
+            padding-left: 1rem;
+            color: #d0dde7;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.4rem;
+        }
+
+        .experience-links {
+            margin-top: 0.75rem;
+        }
+
+        .experience-links a {
+            margin-right: 1rem;
+            font-size: 0.85rem;
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        .experience-links a:hover {
+            text-decoration: underline;
+        }
+
+        .experience-skills {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-pill {
+            background-color: #1D546C;
+            color: #7ee7e1;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .a-text{
+            @* text-decoration: none; *@
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="nav-container p-4">
+                <div class="nav-title">@Model.FullName</div>
+                <div class="nav-subtitle">@Model.Position</div>
+                <div class="nav-text">@Model.MyNavDescription</div>
+
+                <ul id="sectionNav" class="nav nav-pills flex-column gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Projects">Projects</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="col scroll-container" data-bs-spy="scroll" data-bs-target="#sectionNav" data-bs-offset="80"
+                tabindex="0">
+
+                <section id="About">
+                    <p>As an experienced software engineer, I will build and deploy your unique proprietary software,
+                        tailored for your own unique needs. Customization is endless.</p>
+                    <p>My primary focus as a software engineer is to provide you with designing, analysing, writing,
+                        testing and deploying good quality, bug-free code. I am always looking for ways to optimize
+                        performance and scalability of your desired products.</p>
+                    <p>Throughout my career, I've had the opportunity to develop software across a variety of settings -
+                        from <a href="https://www.asml.com/en" class="a-text">european tech giants<a /> to <a
+                                href="https://www.continental.com/en/" class="a-text"> automotive giants</a> to <a
+                                href="https://cpp.canon/about/corporate-information/worldwide/netherlands/ class="a-text"">hardware
+                                giants</a> and also <a href="https://cp-pro.de/en/" class="a-text">small software companies.</a></p>
+                    <p>If you're interested in learning more about me feel free to write me to my <a
+                            href="mailto:@Model.Email">email</a> address.</p>
+                </section>
+                <br />
+                <section id="Experience">
+                    @foreach (var exp in Model.ExperienceList)
+                    {
+                        <a href="@exp.Urls.First()" target="_blank" class="experience-link" style="text-decoration:none;">
+                            <div class="experience-item d-flex mb-5">
+                                <div class="experience-date text-uppercase">
+                                    @exp.StartDate.ToString("MMM yyyy")
+                                    —
+                                    @if(exp.EndDate == DateOnly.MinValue){
+                                        <p>Present</p>
+                                    }
+                                    else{
+                                        @(exp.EndDate?.ToString("MMM yyyy"))
+                                    }
+                                    
+                                </div>
+
+                                <div class="experience-content ms-4">
+
+                                    <div class="experience-header">
+                                        <span class="experience-title">@exp.Title</span>
+                                        <span class="experience-company">· @exp.Company</span>
+                                    </div>
+
+                                    <ul class="experience-description">
+                                        @foreach (var line in exp.Description)
+                                        {
+                                            <li>@line</li>
+                                        }
+                                    </ul>
+
+                                    <div class="experience-links">
+                                        @foreach (var url in exp.Urls.Skip(1))
+                                        {
+                                            <a href="@url" target="_blank">url here</a>
+                                        }
+                                    </div>
+
+                                    <div class="experience-skills">
+                                        @foreach (var skill in exp.Skills)
+                                        {
+                                            <span class="skill-pill">@skill</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </section>
+                <br />
+                <section id="Projects">
+                    <h1>Projects</h1>
+                    <p>Projects content</p>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
