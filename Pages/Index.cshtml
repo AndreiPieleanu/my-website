@@ -11,8 +11,10 @@
     <meta charset="utf-8" />
     <title>@Model.FullName</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     <style>
         body {
@@ -140,8 +142,45 @@
             font-weight: 500;
         }
 
-        .a-text{
-            @* text-decoration: none; *@
+        .a-text {
+            color: #F4F4F4;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .a-text:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .resume-link {
+            color: #F4F4F4;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .resume-link:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .nav-icons a {
+            color: #F4F4F4;
+            font-size: 1.3rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-icons a:hover {
+            color: #7dd3fc;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -162,9 +201,21 @@
                         <a class="nav-link" href="#Experience">Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Projects">Projects</a>
+                        <a class="nav-link" href="#Projects">My Projects</a>
                     </li>
                 </ul>
+                <div class="nav-icons mt-4">
+                    <a href="https://github.com/AndreiPieleanu" target="_blank">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/andrei-v423g421g/" target="_blank">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="mailto:@Model.Email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+
             </nav>
 
             <div class="col scroll-container" data-bs-spy="scroll" data-bs-target="#sectionNav" data-bs-offset="80"
@@ -179,8 +230,10 @@
                     <p>Throughout my career, I've had the opportunity to develop software across a variety of settings -
                         from <a href="https://www.asml.com/en" class="a-text">european tech giants<a /> to <a
                                 href="https://www.continental.com/en/" class="a-text"> automotive giants</a> to <a
-                                href="https://cpp.canon/about/corporate-information/worldwide/netherlands/ class="a-text"">hardware
-                                giants</a> and also <a href="https://cp-pro.de/en/" class="a-text">small software companies.</a></p>
+                                href="https://cpp.canon/about/corporate-information/worldwide/netherlands/"
+                                class="a-text"">hardware
+                                giants</a> and also <a href=" https://cp-pro.de/en/" class="a-text">small software
+                                companies.</a></p>
                     <p>If you're interested in learning more about me feel free to write me to my <a
                             href="mailto:@Model.Email">email</a> address.</p>
                 </section>
@@ -193,20 +246,23 @@
                                 <div class="experience-date text-uppercase">
                                     @exp.StartDate.ToString("MMM yyyy")
                                     —
-                                    @if(exp.EndDate == DateOnly.MinValue){
+                                    @if (exp.EndDate == DateOnly.MinValue)
+                                    {
                                         <p>Present</p>
                                     }
-                                    else{
+                                    else
+                                    {
                                         @(exp.EndDate?.ToString("MMM yyyy"))
                                     }
-                                    
+
                                 </div>
 
                                 <div class="experience-content ms-4">
 
                                     <div class="experience-header">
                                         <span class="experience-title">@exp.Title</span>
-                                        <span class="experience-company">· @exp.Company</span>
+                                        <span class="experience-company">· @exp.Company <i
+                                                class="bi bi-arrow-up-right"></i></span>
                                     </div>
 
                                     <ul class="experience-description">
@@ -217,9 +273,9 @@
                                     </ul>
 
                                     <div class="experience-links">
-                                        @foreach (var url in exp.Urls.Skip(1))
+                                        @for (int i = 1; i < exp.Urls.Count(); i++)
                                         {
-                                            <a href="@url" target="_blank">url here</a>
+                                            <a href="@exp.Urls.ElementAt(i)" target="_blank">@exp.UrlTexts.ElementAt(i - 1)</a>
                                         }
                                     </div>
 
@@ -233,6 +289,8 @@
                             </div>
                         </a>
                     }
+                    <a asp-page="/Resume" class="resume-link">See full Resume here <i
+                            class="bi bi-arrow-up-right"></i></a>
                 </section>
                 <br />
                 <section id="Projects">
@@ -244,7 +302,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
 </html>
