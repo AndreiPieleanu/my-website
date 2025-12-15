@@ -70,6 +70,7 @@ export default function Home() {
               </div>
             </div>
           ))}
+          <a href="resume" className="a-text"><h3>View Full Resume Here</h3></a>
         </section>
 
         {/* PROJECTS */}
