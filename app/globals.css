@@ -1,172 +1,121 @@
-.container-root {
-  display: flex;
-  height: 100%;
-}
-.section-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #F4F4F4;
-}
-
-.nav-link svg {
-  opacity: 0.8;
-}
-
-.nav-link:hover svg {
-  opacity: 1;
-}
-
-.content-container {
-  width: 70%;
-  overflow-y: auto;
-}
-
+/* styles/globals.css */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0C2B4E;
-  color: #F4F4F4;
+  margin: 0;
+  background-color: #1B3C53;
+  color: #E3E3E3;
 }
 
-.nav-container {
-  height: 100%;
+.container-root {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background-color: #234C6A;
+  padding: 2rem;
   position: sticky;
   top: 0;
-  padding: 2%;
-}
-
-
-.nav-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.nav-subtitle {
-  font-size: 0.9rem;
-  color: #cfd8dc;
-  margin-bottom: 1.5rem;
-}
-
-.nav-text {
-  font-size: 0.85rem;
-  color: #cfd8dc;
-  margin-bottom: 1.5rem;
-}
-
-.nav-pills .nav-link {
-  color: #F4F4F4;
-}
-
-.nav-pills .nav-link.active {
-  background-color: #1D546C;
-}
-
-.nav-pills .nav-link:hover {
-  background-color: #397b98;
-}
-
-.scroll-container {
   height: 100vh;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  position: relative;
-  /* REQUIRED */
 }
 
-section {
-  min-height: 100vh;
-  padding: 80px 40px;
+.profile h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
 }
 
-#About {
-  background-color: #1A3D64;
+.profile h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
-#Experience {
-  background-color: #1A3D64;
+.profile p {
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-#Projects {
-  background-color: #1A3D64;
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
 }
 
-.experience-item {
-  color: #F4F4F4;
-  padding: 1.5rem 2rem;
+.sidebar-nav li {
+  margin-bottom: 1rem;
 }
 
-.experience-item:hover {
-  background-color: #397b98;
+.sidebar-nav a {
+  color: #E3E3E3;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
 }
 
+.sidebar-nav a:hover {
+  color: #456882;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 3rem;
+  background-color: #1B3C53;
+}
+
+section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #456882;
+  padding-bottom: 0.3rem;
+}
+
+.experience-item,
 .project-item {
-  padding: 1.5rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #234C6A;
+  transition: background 0.3s;
 }
 
+.experience-item:hover,
 .project-item:hover {
-  background-color: #397b98;
+  background-color: #456882;
 }
 
 .experience-date {
-  min-width: 130px;
-  font-size: 0.8rem;
-  color: #8faecf;
-  letter-spacing: 0.05em;
-}
-
-.experience-header {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.experience-title {
-  color: #F4F4F4;
-}
-
-.experience-company {
-  color: #a9c4d8;
-}
-
-.experience-description {
-  margin-top: 0.75rem;
-  padding-left: 1rem;
-  color: #d0dde7;
-}
-
-.experience-description li {
-  margin-bottom: 0.4rem;
-}
-
-.experience-link {
-  margin-top: 0.75rem;
-  text-decoration: none;
-}
-
-.experience-link a {
-  margin-right: 1rem;
+  min-width: 150px;
   font-size: 0.85rem;
-  color: #7dd3fc;
-  text-decoration: none;
+  color: #E3E3E3;
 }
 
-.experience-link a:hover {
-  text-decoration: underline;
-}
-
-.experience-skills {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.skills {
+  margin-top: 0.5rem;
 }
 
 .skill-pill {
+  display: inline-block;
   background-color: #1D546C;
-  color: #7ee7e1;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  margin-right: 0.3rem;
+  margin-top: 0.3rem;
   font-size: 0.75rem;
-  font-weight: 500;
+  color: #7ee7e1;
+}
+
+.project-img img {
+  min-width: 150px;
+  height: 80px;
+  object-fit: fill;
+  border-radius: 5px;
 }
 
 .a-text {
@@ -180,102 +129,7 @@ section {
   text-decoration: underline;
 }
 
-.resume-link {
-  color: #F4F4F4;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.resume-link:hover {
-  color: #7dd3fc;
+.a-object{
   text-decoration: underline;
-}
-
-.nav-icons {
-  display: flex;
-  gap: 1rem;
-  margin-top: auto;
-}
-
-.nav-icons a {
   color: #F4F4F4;
-  font-size: 1.3rem;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-icons a:hover {
-  color: #7dd3fc;
-  transform: translateY(-2px);
-}
-
-.experience-item {
-  color: #F4F4F4;
-}
-
-.project-date {
-  min-width: 160px;
-  max-width: 160px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-date img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  border-radius: 6px;
-  border: 1px solid #1D546C;
-}
-
-.project-header {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.project-title {
-  color: #F4F4F4;
-}
-
-.project-company {
-  color: #a9c4d8;
-}
-
-.project-description {
-  margin-top: 0.75rem;
-  padding-left: 1rem;
-  color: #d0dde7;
-}
-
-.project-description li {
-  margin-bottom: 0.4rem;
-}
-
-.project-link {
-  margin-top: 0.75rem;
-  text-decoration: none;
-}
-
-.project-link:hover {
-  background-color: #397b98;
-}
-
-.project-link a {
-  margin-right: 1rem;
-  font-size: 0.85rem;
-  color: #7dd3fc;
-  text-decoration: none;
-}
-
-.project-link a:hover {
-  text-decoration: underline;
-}
-
-.project-skills {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }

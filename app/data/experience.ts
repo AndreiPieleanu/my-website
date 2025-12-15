@@ -27,7 +27,7 @@ export const experiences = [
     ],
     skills: ["Xamarin", "C#", "Java", "Azure", "CI/CD"],
     urls: ["https://cp-pro.de/en/", "https://play.google.com/store/apps/details?id=de.cppro.office4.android&hl=en", "https://apps.apple.com/de/app/cp-pro-mobile/id1083623914"],
-    urlTexts: ["Android Store", "Apple Store"]
+    urlTexts: ["Android App", "iOS App"]
   },
   {
     start: "06/2024",
@@ -39,7 +39,7 @@ export const experiences = [
     ],
     skills: ["AWS", "Kubernetes", "gRPC", "Grafana", "RabbitMQ", "Java", "Spring", "CI/CD"],
     urls: ["https://sue.nl/", "https://github.com/AndreiPieleanu/suedataplatform"],
-    urlTexts: ["AWS cloud tool"]
+    urlTexts: ["See AWS cloud tool"]
   },
   {
     start: "02/2024",
